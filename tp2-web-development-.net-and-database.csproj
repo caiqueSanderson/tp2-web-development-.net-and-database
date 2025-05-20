@@ -7,4 +7,28 @@
     <RootNamespace>tp2_web_development_.net_and_database</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\NovaPasta1\**" />
+    <Compile Remove="Pages\NovaPasta\**" />
+    <Content Remove="Pages\NovaPasta1\**" />
+    <Content Remove="Pages\NovaPasta\**" />
+    <EmbeddedResource Remove="Pages\NovaPasta1\**" />
+    <EmbeddedResource Remove="Pages\NovaPasta\**" />
+    <None Remove="Pages\NovaPasta1\**" />
+    <None Remove="Pages\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\files\note_20250519_194135.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="note_20250519_193728.txt" />
+    <None Remove="note_20250519_193748.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
 </Project>

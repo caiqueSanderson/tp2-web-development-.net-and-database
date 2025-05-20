@@ -1,0 +1,60 @@
+﻿@page
+@model tp2_web_development_.net_and_database.Pages.Tp10.SaveNoteModel
+@{
+	ViewData["Title"] = "Salvar Anotação";
+}
+
+<style>
+	body {
+		background: linear-gradient(to right, #e0f7fa, #ffffff);
+		font-family: 'Segoe UI', sans-serif;
+	}
+
+	.card {
+		max-width: 500px;
+		margin: 60px auto;
+		padding: 30px;
+		background-color: white;
+		border-radius: 15px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	h2 {
+		font-weight: 600;
+		margin-bottom: 25px;
+		text-align: center;
+		color: #00796b;
+	}
+</style>
+
+<div class="card">
+	<h2>Anotações</h2>
+
+	<form method="post">
+		<div class="mb-3">
+			<label asp-for="Input.Content" class="form-label">
+				Escreva suas anotações:
+			</label>
+			<textarea asp-for="Input.Content" class="form-control" rows="5"></textarea>
+			<span asp-validation-for="Input.Content" class="text-danger"></span>
+		</div>
+
+		<button type="submit" class="btn btn-primary">
+			Salvar
+		</button>
+	</form>
+
+	@if (TempData["SavedFile"] != null)
+	{
+		var filename = TempData["SavedFile"].ToString();
+		<div class="alert alert-success mt-3">
+			Anotação salva com sucesso! Arquivo:
+			<a href="/files/@filename" download>@filename</a>
+		</div>
+	}
+</div>
+
+@section Scripts 
+{
+	<partial name="_ValidationScriptsPartial" />
+}

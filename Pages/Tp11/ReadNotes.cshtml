@@ -1,0 +1,58 @@
+﻿@page
+@model tp2_web_development_.net_and_database.Pages.Tp11.ReadNotesModel
+@{
+	ViewData["Title"] = "Ler Anotações";
+}
+
+<style>
+	body {
+		background: linear-gradient(to right, #e0f7fa, #ffffff);
+		font-family: 'Segoe UI', sans-serif;
+	}
+
+	.card {
+		max-width: 500px;
+		margin: 60px auto;
+		padding: 30px;
+		background-color: white;
+		border-radius: 15px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	h2 {
+		font-weight: 600;
+		margin-bottom: 25px;
+		text-align: center;
+		color: #00796b;
+	}
+</style>
+
+<h2>Arquivos Salvos</h2>
+
+@if (Model.FileNames.Count == 0)
+{
+	<div class="card">
+		<p>Nenhum arquivo encontrado em <code>wwwroot/files</code>.</p>
+	</div>
+}
+else
+{
+	<div class="card">
+		<ul>
+			@foreach (var file in Model.FileNames)
+			{
+				<li>
+					<a asp-page="/Tp11/ReadNotes" asp-route-file="@file">@file</a>
+				</li>
+			}
+		</ul>
+	</div>
+	@if (!string.IsNullOrEmpty(Model.SelectedFile))
+	{
+		<h3>Conteúdo do arquivo: @Model.SelectedFile</h3>
+		<pre style="background:#f8f9fa;padding:10px;border-radius:5px;">@Model.FileContent</pre>
+	}
+}
+
+
+

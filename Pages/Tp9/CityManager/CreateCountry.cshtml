@@ -1,0 +1,81 @@
+﻿@page
+@model tp2_web_development_.net_and_database.Pages.Tp9.CityManager.CreateCountryModel
+@{
+	ViewData["Title"] = "Cadastrar País";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<style>
+	body {
+		background: linear-gradient(to right, #e0f7fa, #ffffff);
+		font-family: 'Segoe UI', sans-serif;
+	}
+
+	.form-card {
+		max-width: 500px;
+		margin: 60px auto;
+		padding: 30px;
+		background-color: white;
+		border-radius: 15px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	h2 {
+		font-weight: 600;
+		margin-bottom: 25px;
+		text-align: center;
+		color: #00796b;
+	}
+
+	.btn-primary {
+		background-color: #00796b;
+		border: none;
+		border-radius: 30px;
+		padding: 10px 25px;
+	}
+
+		.btn-primary:hover {
+			background-color: #004d40;
+		}
+
+	.alert-success {
+		background-color: #d0f0e0;
+		color: #2e7d32;
+		border-radius: 10px;
+	}
+</style>
+
+<div class="form-card">
+	<h2>Cadastrar País</h2>
+
+	<form method="post">
+		<div class="mb-3">
+			<label asp-for="Input.CountryName" class="control-label">Nome do país:</label>
+			<input asp-for="Input.CountryName" class="form-control" placeholder="Ex: Brasil" />
+			<span asp-validation-for="Input.CountryName" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="Input.CountryCode" class="control-label">Código do país:</label>
+			<input asp-for="Input.CountryCode" class="form-control" placeholder="Ex: BR" />
+			<span asp-validation-for="Input.CountryCode" class="text-danger"></span>
+		</div>
+
+		<div class="text-center">
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		</div>
+	</form>
+</div>
+
+@if (Model.CreatedCountry != null)
+{
+	<div class="alert alert-success mt-4">
+		<strong>Sucesso!</strong> País cadastrado com sucesso: @Model.CreatedCountry.CountryName (@Model.CreatedCountry.CountryCode)
+	</div>
+}
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
